@@ -3,6 +3,8 @@ package module.kidnap.v3
 import play.api.libs.json.Json
 import play.api.libs.json.Json.{toJson}
 import play.api.libs.json.JsValue
+import play.api.libs.json.JsLookup
+import play.api.libs.json.JsLookupResult
 import play.api.libs.json.JsObject
 
 import util.dao.from
@@ -414,7 +416,7 @@ object kidnapModule extends ModuleTrait {
   		var sortByLoc = false
  	
   		def conditionAcc(key : String, data : JsValue)
-  						(f : JsValue => Option[AnyRef])(c : AnyRef => DBObject)
+  						(f : JsLookupResult => Option[AnyRef])(c : AnyRef => DBObject)
   						: Option[DBObject] = f(data \ key) match {
 								  				case None => None
 								  				case Some(x) => Some(c(x))	

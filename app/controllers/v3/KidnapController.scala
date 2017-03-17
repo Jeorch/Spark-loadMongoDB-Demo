@@ -23,7 +23,7 @@ import module.kidnap.v3.kidnapCollectionMessages.msg_IsUserCollect
 import module.timemanager.v3.TMMessages._
 import module.kidnap.v3.kidnapMessages._
 
-object KidnapController extends Controller {
+class KidnapController extends Controller {
     def pushService = Action (request => requestArgsV2(request) { jv =>
         import pattern.ResultMessage.common_result
         import pattern.LogMessage.common_log

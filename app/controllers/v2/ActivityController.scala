@@ -9,7 +9,7 @@ import dongdamessages.MessageRoutes
 import pattern.ResultMessage.msg_CommonResultMessage
 import pattern.LogMessage.msg_log
 
-object ActivityController {
+class ActivityController {
     def historyActivities = Action (request => requestArgsV2(request) { jv =>
         import pattern.ResultMessage.common_result
         import pattern.LogMessage.common_log

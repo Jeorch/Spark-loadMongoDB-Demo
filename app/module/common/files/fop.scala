@@ -1,23 +1,33 @@
 package module.common.files
 
 import java.io.File
+
 import play.api.libs.Files
 import java.io.FileInputStream
 
 import play.api.mvc.MultipartFormData
 import play.api.libs.Files.TemporaryFile
-
 import play.api.libs.json.Json
 import play.api.libs.json.Json._
 import play.api.libs.json.JsValue
-
 import util.errorcode.ErrorCode
+import java.util.UUID
 
 object fop {
 	def uploadFile(data : MultipartFormData[TemporaryFile]) : JsValue = {
 	  	data.file("upload").map { x =>
-	  	  	Files.moveFile(x.ref.file, new File("upload/" + x.filename), true, true)
-	  
+
+  	      	// var lst : List[JsValue] = Nil
+      	    data.files.foreach { x =>
+      	        val uuid = UUID.randomUUID
+				// val file = new File("upload/")
+				// if(!file.exists()) {
+				// 	file.mkdir()
+				// }
+				new TemporaryFile(x.ref.file).moveTo(new File("upload/" + x.filename), true)
+      	  	  	// lst = lst :+ toJson(uuid.toString)
+      	  	}
+      	    // Json.toJson(Map("status" -> toJson("ok"), "result" -> toJson(lst)))
 			Json.toJson(Map("status" -> toJson("ok"), "result" -> toJson("success")))
 	  	  	
 	  	}.getOrElse {

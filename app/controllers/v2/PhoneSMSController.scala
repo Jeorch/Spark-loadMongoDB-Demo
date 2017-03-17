@@ -9,7 +9,7 @@ import pattern.LogMessage.msg_log
 import pattern.ResultMessage.msg_CommonResultMessage
 import play.api.libs.json.Json.toJson
 
-object PhoneSMSController extends Controller {
+class PhoneSMSController extends Controller {
 	def sendSMSCode = Action (request => requestArgsV2(request) { jv => 
 			import pattern.ResultMessage.common_result
 		    import pattern.LogMessage.common_log

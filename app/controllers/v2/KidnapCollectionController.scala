@@ -12,7 +12,7 @@ import module.order.v2.orderCommentsMessages.msg_OverallOrderLst
 import pattern.LogMessage.msg_log
 import play.api.libs.json.Json.toJson
 
-object KidnapCollectionController extends Controller {
+class KidnapCollectionController extends Controller {
 	def collectService = Action (request => requestArgsV2(request) { jv => 
 			import pattern.ResultMessage.lst_result
 			import pattern.LogMessage.common_log

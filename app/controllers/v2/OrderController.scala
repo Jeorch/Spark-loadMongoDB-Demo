@@ -14,7 +14,7 @@ import pattern.LogMessage.msg_log
 import pattern.ParallelMessage
 import play.api.libs.json.Json.toJson
 
-object OrderController extends Controller {
+class OrderController extends Controller {
 	def pushOrder = Action (request => requestArgsV2(request) { jv => 
 			import pattern.ResultMessage.common_result
 		    import pattern.LogMessage.common_log

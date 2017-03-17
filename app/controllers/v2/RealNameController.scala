@@ -11,7 +11,7 @@ import pattern.LogMessage.msg_log
 import play.api.libs.json.Json.toJson
 import module.realname.RealNameMessages._
 
-object RealNameController extends Controller {
+class RealNameController extends Controller {
     def pushRealName = Action (request => requestArgsV2(request) { jv =>
         import pattern.ResultMessage.common_result
         import pattern.LogMessage.common_log

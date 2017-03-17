@@ -11,7 +11,7 @@ import module.auth.AuthMessage.msg_AuthCheck
 import pattern.LogMessage.msg_log
 import play.api.libs.json.Json.toJson
 
-object ProfileController extends Controller {
+class ProfileController extends Controller {
 	def updateUserProfile = Action (request => requestArgsV2(request) { jv => 
 			import pattern.ResultMessage.common_result
 		    import pattern.LogMessage.common_log

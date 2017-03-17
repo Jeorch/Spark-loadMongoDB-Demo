@@ -16,7 +16,7 @@ import module.emxmpp.EMMessages.msg_RegisterEMUser
 import pattern.ResultMessage.msg_CommonResultMessage
 import pattern.LogMessage.msg_log
 
-object AuthController extends Controller {
+class AuthController extends Controller {
 	def authWithPhoneCode = Action (request => requestArgsV2(request) { jv => 
 			import pattern.ResultMessage.common_result
 			import pattern.LogMessage.common_log

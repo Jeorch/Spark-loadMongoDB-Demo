@@ -9,7 +9,7 @@ import module.order.v2.orderCommentsMessages._
 import pattern.LogMessage.msg_log
 import play.api.libs.json.Json.toJson
 
-object OrderCommentsController extends Controller {
+class OrderCommentsController extends Controller {
 	def pushOrderComments = Action (request => requestArgsV2(request) { jv => 
 		import pattern.ResultMessage.common_result
 		import pattern.LogMessage.common_log

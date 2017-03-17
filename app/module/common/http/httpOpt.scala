@@ -3,7 +3,7 @@ package module.common.http
 import collection.JavaConversions._
 import java.net._
 import java.io._
-import io.Source.fromInputStream
+// import io.Source.fromInputStream
 import play.api.libs.json.Json
 import play.api.libs.json.Json.{toJson, parse}
 import play.api.libs.json.JsValue
@@ -56,7 +56,17 @@ case class httpOpt(val url : String) {
 		loadCookies
 		connection.connect
 		storeCookies
-		fromInputStream(connection.getInputStream) 
+		// fromInputStream(connection.getInputStream) 
+
+		val in = new BufferedReader(new InputStreamReader(connection.getInputStream))
+		val buffer = new StringBuffer
+		var line = ""
+		do {
+			buffer.append(line)
+			line = in.readLine
+		} while (line != null)
+
+		buffer.toString
 	}
 
 	def post(data : String) : String = {

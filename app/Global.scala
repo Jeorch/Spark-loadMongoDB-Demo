@@ -1,7 +1,7 @@
 import akka.actor.{Actor, Props}
 import play.api.libs.concurrent.Akka
 import play.api.GlobalSettings
-import play.api.templates.Html
+//import play.api.templates.Html
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 import module.notification._

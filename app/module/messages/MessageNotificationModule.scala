@@ -78,29 +78,29 @@ class MessageNotificationModule(defaultNotificationCenter : ActorRef) { //(impli
 	
 	implicit val timeout = Timeout(1 second)
 	
-	def connectWs(user_id : String) : WebSocket[JsValue] = WebSocket.async[JsValue]{ request =>
-      	(defaultNotificationCenter ? register(user_id)).map {
+	// def connectWs(user_id : String) : WebSocket[JsValue] = WebSocket.async[JsValue]{ request =>
+ //      	(defaultNotificationCenter ? register(user_id)).map {
 
-        case Connected(enumerator:Enumerator[JsValue]) =>
-        	val iteratee = Iteratee.foreach[JsValue] { event =>
-        	defaultNotificationCenter ! receiveNotification2(event)
-          }.map { _ =>
-            defaultNotificationCenter ! unRegister(user_id)
-          }
-          (iteratee, enumerator)
+ //        case Connected(enumerator:Enumerator[JsValue]) =>
+ //        	val iteratee = Iteratee.foreach[JsValue] { event =>
+ //        	defaultNotificationCenter ! receiveNotification2(event)
+ //          }.map { _ =>
+ //            defaultNotificationCenter ! unRegister(user_id)
+ //          }
+ //          (iteratee, enumerator)
 
-        case CannotConnect(error) =>
-          // Connection error
+ //        case CannotConnect(error) =>
+ //          // Connection error
 
-          // A finished Iteratee sending EOF
-          val iteratee = Done[JsValue, Unit]((), Input.EOF)
+ //          // A finished Iteratee sending EOF
+ //          val iteratee = Done[JsValue, Unit]((), Input.EOF)
 
-          // Send an error and close the socket
-          val enumerator = Enumerator[JsValue](JsObject(Seq("error" -> JsString(error)))).andThen(Enumerator.enumInput(Input.EOF))
+ //          // Send an error and close the socket
+ //          val enumerator = Enumerator[JsValue](JsObject(Seq("error" -> JsString(error)))).andThen(Enumerator.enumInput(Input.EOF))
 
-          (iteratee, enumerator)
-      }
-    }
+ //          (iteratee, enumerator)
+ //      }
+ //    }
 }
 
 object MessageNotificationModule {

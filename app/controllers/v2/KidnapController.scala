@@ -20,7 +20,7 @@ import module.auth.AuthMessage.msg_AuthCheck
 import pattern.LogMessage._
 import play.api.libs.json.Json.toJson
 
-object KidnapController extends Controller {
+class KidnapController extends Controller {
 	def pushService = Action (request => requestArgsV2(request) { jv => 
 			import pattern.ResultMessage.common_result
 			import pattern.LogMessage.common_log

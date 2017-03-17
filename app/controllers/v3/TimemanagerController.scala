@@ -12,7 +12,7 @@ import play.api.libs.json.Json.toJson
 
 import module.timemanager.v3.TMMessages._
 
-object TimemanagerController {
+class TimemanagerController {
     def queryServiceTimeManagement = Action (request => requestArgsV2(request) { jv =>
         import pattern.ResultMessage.common_result
         import pattern.LogMessage.common_log

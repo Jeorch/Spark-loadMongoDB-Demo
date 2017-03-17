@@ -22,7 +22,8 @@ import play.api.libs.concurrent.Akka
 import play.api.Play.current
 import akka.actor.SupervisorStrategy._
 import scala.concurrent.duration._
-import akka.routing.SmallestMailboxRouter
+// import akka.routing.SmallestMailboxRouter
+import akka.routing.SmallestMailboxPool
 import org.apache.commons.mail._
 import akka.actor.ActorDSL._
 import play.api.libs.json.Json
@@ -78,7 +79,7 @@ object EmailModule {
    */
   val emailServiceActor = Akka.system.actorOf(
     Props[EmailServiceActor].withRouter(
-      SmallestMailboxRouter(nrOfInstances = 50)
+      SmallestMailboxPool(10)
     ), name = "emailService"
   )
  
