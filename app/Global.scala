@@ -13,11 +13,11 @@ object Global extends GlobalSettings {
 		import play.api.Play.current
 		println("application started")
 		
-		val actor = Akka.system(application).actorOf(Props[apnsActor])
-		Akka.system(application).scheduler.schedule(30.seconds, 24.hours, actor, apnsNotificationAll) 
-
-		val ddn = Akka.system(application).actorOf(Props[DDNActor])
-		Akka.system(application).scheduler.schedule(0.seconds, 23.hours + 50.minutes, ddn, DDNInit) 
+//		val actor = Akka.system(application).actorOf(Props[apnsActor])
+//		Akka.system(application).scheduler.schedule(30.seconds, 24.hours, actor, apnsNotificationAll)
+//
+//		val ddn = Akka.system(application).actorOf(Props[DDNActor])
+//		Akka.system(application).scheduler.schedule(0.seconds, 23.hours + 50.minutes, ddn, DDNInit)
 	}
 	
 	override def onStop(application: play.api.Application) = {

@@ -16,18 +16,10 @@ import java.util.UUID
 object fop {
 	def uploadFile(data : MultipartFormData[TemporaryFile]) : JsValue = {
 	  	data.file("upload").map { x =>
-
-  	      	// var lst : List[JsValue] = Nil
-      	    data.files.foreach { x =>
-      	        val uuid = UUID.randomUUID
-				// val file = new File("upload/")
-				// if(!file.exists()) {
-				// 	file.mkdir()
-				// }
+  			data.files.foreach { x =>
+      	  		val uuid = UUID.randomUUID
 				new TemporaryFile(x.ref.file).moveTo(new File("upload/" + x.filename), true)
-      	  	  	// lst = lst :+ toJson(uuid.toString)
       	  	}
-      	    // Json.toJson(Map("status" -> toJson("ok"), "result" -> toJson(lst)))
 			Json.toJson(Map("status" -> toJson("ok"), "result" -> toJson("success")))
 	  	  	
 	  	}.getOrElse {

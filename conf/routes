@@ -82,5 +82,7 @@ POST    /v3/tm/update                               controllers.v3.TimemanagerCo
 
 POST    /email/sendPrivacy                          controllers.emailController.sendEmail
 
+GET     /spark/test                                 controllers.SparkTestController.mongosparktest
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               			controllers.Assets.at(path="/public", file)
