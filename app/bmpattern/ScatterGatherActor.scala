@@ -27,6 +27,7 @@ object ScatterGatherActor {
 }
 
 class ScatterGatherActor(originSender : ActorRef, msr : MessageRoutes) extends Actor with ActorLogging {
+    implicit val cm = msr.cm
 
 	var next : ActorRef = null
 	var sub_act = Seq[ActorRef]()

@@ -1,4 +1,4 @@
-package util.errorcode
+package bmutil.errorcode
 
 import play.api.libs.json.Json
 import play.api.libs.json.Json._

@@ -12,8 +12,8 @@ import javax.inject.Singleton
   */
 @Singleton
 class MongoDBSpark extends SparkContextManager {
-    def getUserProfileCount = customRdd.count()
-    def getSliceData(f : Int, t : Int) = customRdd.toLocalIterator.slice(f, t)
+    def queryUsers(range : Range) = users
+    def queryProfiles(range : Range) = user_profile
 }
 
 trait SparkContextManager {
@@ -22,12 +22,21 @@ trait SparkContextManager {
                     .setMaster("local[4]")
     val sc = new SparkContext(conf)
 
-    lazy val customRdd = {
+    lazy val users = {
+        val readConfig = ReadConfig(Map("spark.mongodb.input.uri" -> "mongodb://localhost/"
+                                        , "spark.mongodb.input.database" -> "baby"
+                                        , "spark.mongodb.input.collection" -> "users"
+                                        , "readPreference.name" -> "secondaryPreferred"))
+//        MongoSpark.load(sc, readConfig = readConfig).sortBy(x => x.getLong("date"), false)
+        MongoSpark.load(sc, readConfig = readConfig)
+    }
+    
+    lazy val user_profile = {
         val readConfig = ReadConfig(Map("spark.mongodb.input.uri" -> "mongodb://localhost/"
                                         , "spark.mongodb.input.database" -> "baby"
                                         , "spark.mongodb.input.collection" -> "user_profile"
                                         , "readPreference.name" -> "secondaryPreferred"))
-        val customRdd = MongoSpark.load(sc, readConfig = readConfig)
-        customRdd
+//        MongoSpark.load(sc, readConfig = readConfig).sortBy(x => x.getLong("date"), false)
+        MongoSpark.load(sc, readConfig = readConfig)
     }
 }
