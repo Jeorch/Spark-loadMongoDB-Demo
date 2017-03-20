@@ -33,18 +33,14 @@ object AuthModule extends ModuleTrait {
 
     def authCheck(data : JsValue)(implicit cm : CommonModules)  : (Option[Map[String, JsValue]], Option[JsValue]) = {
         try {
-//            val user_id = (data \ "user_id").asOpt[String].get
-
-            println(cm.getClass)
-            println("i am here")
+            val msk = cm.modules.get.get("db").map (x => x.asInstanceOf[MongoDBSpark]).getOrElse(throw new Exception("wrong input"))
+            val user_id = (data \ "user_id").asOpt[String].get
+            println(user_id)
+            val f = msk.users.filter (x => x.getString("user_id") == "7dd535ae92c93370dafe6427b39d113e")
+            val auth = if (!f.isEmpty) 1
+                        else 0
             
-            (Some(Map("result" -> toJson("ok"))), None)
-            
-            // TODO : change data to spark map-reduce
-//            (from db() in "users" where ("user_id" -> user_id) select (x => x)).toList match {
-//                case Nil => throw new Exception("unknown user")
-//                case head :: Nil => (Some(Map("result" -> toJson("ok"))), None)
-//            }
+            (Some(Map("result" -> toJson("ok"), "auth" -> toJson(auth))), None)
 
         } catch {
             case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
