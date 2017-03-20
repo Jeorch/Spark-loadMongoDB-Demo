@@ -19,11 +19,15 @@ class MongoDBSpark extends SparkContextManager {
 trait SparkContextManager {
     val conf = new SparkConf()
                     .setAppName("dongda-service")
-                    .setMaster("local[4]")
+//                    .setMaster("local[4]")
+                    .setMaster("spark://127.0.0.1:9999")
+                    .setJars("/Users/BM/.ivy2/jars/org.mongodb.spark_mongo-spark-connector_2.11-2.0.0.jar" ::
+                             "/Users/BM/.ivy2/jars/org.mongodb_mongo-java-driver-3.2.2.jar" ::  Nil)
+
     val sc = new SparkContext(conf)
 
     lazy val users = {
-        val readConfig = ReadConfig(Map("spark.mongodb.input.uri" -> "mongodb://localhost/"
+        val readConfig = ReadConfig(Map("spark.mongodb.input.uri" -> "mongodb://127.0.0.1/"
                                         , "spark.mongodb.input.database" -> "baby"
                                         , "spark.mongodb.input.collection" -> "users"
                                         , "readPreference.name" -> "secondaryPreferred"))
@@ -32,7 +36,7 @@ trait SparkContextManager {
     }
     
     lazy val user_profile = {
-        val readConfig = ReadConfig(Map("spark.mongodb.input.uri" -> "mongodb://localhost/"
+        val readConfig = ReadConfig(Map("spark.mongodb.input.uri" -> "mongodb://127.0.0.1/"
                                         , "spark.mongodb.input.database" -> "baby"
                                         , "spark.mongodb.input.collection" -> "user_profile"
                                         , "readPreference.name" -> "secondaryPreferred"))
