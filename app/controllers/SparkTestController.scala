@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc._
-import dongdasparkmodule.MongoDBSpark
+import bmmodule.MongoDBSpark
 import javax.inject._
 import play.api.inject.Modules
 

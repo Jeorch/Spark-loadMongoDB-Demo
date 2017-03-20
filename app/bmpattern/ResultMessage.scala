@@ -1,9 +1,9 @@
-package dongdapattern
+package bmpattern
 
 
 import play.api.libs.json.JsValue
 import play.api.libs.json.Json.toJson
-import dongdamessages.CommonMessage
+import bmmessages.CommonMessage
 
 import util.errorcode.ErrorCode
 

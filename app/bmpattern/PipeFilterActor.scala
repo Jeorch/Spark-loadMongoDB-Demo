@@ -1,4 +1,4 @@
-package dongdapattern
+package bmpattern
 
 
 import scala.concurrent.duration._
@@ -9,7 +9,7 @@ import akka.actor.ActorLogging
 import akka.actor.ActorRef
 import akka.actor.ActorSystem
 import akka.actor.Props
-import dongdamessages._
+import bmmessages._
 //import module.auth.AuthModule
 //import module.auth.msg_AuthCommand
 //import module.emxmpp.EMModule

@@ -1,4 +1,4 @@
-package dongdasparkmodule
+package bmmodule
 
 import play.api.inject.Module
 import play.api.Environment

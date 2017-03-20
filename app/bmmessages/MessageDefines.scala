@@ -1,4 +1,4 @@
-package dongdamessages
+package bmmessages
 
 import akka.actor.ActorRef
 import akka.actor.Actor

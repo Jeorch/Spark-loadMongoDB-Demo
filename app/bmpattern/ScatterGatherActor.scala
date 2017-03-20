@@ -1,23 +1,23 @@
-package dongdapattern
+package bmpattern
 
 
 import akka.actor.Actor
 import akka.actor.ActorLogging
 import akka.actor.ActorRef
 import akka.actor.Props
-import dongdamessages.MessageRoutes
+import bmmessages.MessageRoutes
 import scala.concurrent.stm._
 import play.api.libs.json.JsValue
 import play.api.libs.json.Json.toJson
 
 import ParallelMessage.f
-import dongdamessages.result
+import bmmessages.result
 
 import scala.concurrent.duration._
-import dongdamessages.timeout
-import dongdamessages.error
+import bmmessages.timeout
+import bmmessages.error
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import dongdamessages.CommonMessage
+import bmmessages.CommonMessage
 import play.api.libs.json.JsObject
 
 object ScatterGatherActor {

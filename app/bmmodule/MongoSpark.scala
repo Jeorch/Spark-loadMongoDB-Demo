@@ -1,4 +1,4 @@
-package dongdasparkmodule
+package bmmodule
 
 import com.mongodb.spark._
 import org.bson.Document

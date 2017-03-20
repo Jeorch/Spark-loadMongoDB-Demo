@@ -1,4 +1,4 @@
-package dongdapattern
+package bmpattern
 
 
 import akka.actor.Actor
@@ -8,7 +8,7 @@ import akka.actor.Props
 
 import play.api.libs.json.Json.toJson
 
-import dongdamessages._
+import bmmessages._
 import akka.actor.Terminated
 
 class RoutesActor extends Actor with ActorLogging {
@@ -43,7 +43,7 @@ class RoutesActor extends Actor with ActorLogging {
 			originSender ! err
 			cancelActor
 		}
-		case dongdamessages.timeout() => {
+		case bmmessages.timeout() => {
 			originSender ! toJson("timeout")
 			cancelActor
 		}

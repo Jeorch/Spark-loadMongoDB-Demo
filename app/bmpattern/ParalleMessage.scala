@@ -1,10 +1,10 @@
-package dongdapattern
+package bmpattern
 
 
 import play.api.libs.json.JsValue
-import dongdamessages.CommonMessage
-import dongdamessages.MessageDefines
-import dongdamessages.MessageRoutes
+import bmmessages.CommonMessage
+import bmmessages.MessageDefines
+import bmmessages.MessageRoutes
 
 object ParallelMessage {
 	implicit val f : List[Map[String, JsValue]] => Map[String, JsValue] = lst => {

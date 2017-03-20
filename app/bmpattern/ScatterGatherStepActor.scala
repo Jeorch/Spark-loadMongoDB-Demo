@@ -1,12 +1,12 @@
-package dongdapattern
+package bmpattern
 
 
-import dongdamessages.MessageRoutes
+import bmmessages.MessageRoutes
 import akka.actor.ActorLogging
 import akka.actor.ActorRef
 import akka.actor.Actor
 import akka.actor.Props
-import dongdamessages.CommonMessage
+import bmmessages.CommonMessage
 
 object ScatterGatherStepActor {
 	def prop(sga : ActorRef, msr : MessageRoutes) : Props = {
