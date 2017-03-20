@@ -8,3 +8,6 @@ target
 /RUNNING_PID
 /upload
 /lib
+/bin/
+
+.cache-main

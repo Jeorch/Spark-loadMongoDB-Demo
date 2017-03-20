@@ -18,3 +18,6 @@ addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
 
 // sbt-idea
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.6.0")
+
+// eclipse
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.1.0")

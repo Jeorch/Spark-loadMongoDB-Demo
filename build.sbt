@@ -20,6 +20,7 @@ libraryDependencies ++= Seq(
 lazy val root = (project in file(".")).
     settings(commonSettings: _*).
     settings(
+	    routesGenerator := InjectedRoutesGenerator,
         name := "dongda-service",
         fork in run := true,
         javaOptions += "-Xmx5G"
